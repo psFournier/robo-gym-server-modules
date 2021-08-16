@@ -14,7 +14,7 @@ class Client():
     def start_new_server(self, cmd, gui):
 
         i =0
-        max_tentatives = 10
+        max_tentatives = 1
         while (i<max_tentatives):
             try:
                 print('Starting new Robot Server | Tentative {} of {}'.format(str(i+1),str(max_tentatives)))
