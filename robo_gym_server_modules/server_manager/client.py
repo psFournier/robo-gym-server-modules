@@ -14,7 +14,7 @@ class Client():
     def start_new_server(self, cmd, gui):
 
         i =0
-        max_tentatives = 1
+        max_tentatives = 10
         while (i<max_tentatives):
             try:
                 print('Starting new Robot Server | Tentative {} of {}'.format(str(i+1),str(max_tentatives)))
@@ -62,7 +62,7 @@ class Client():
                 pass
             i+=1
 
-        raise RuntimeError('Failed {} tentatives of killing Robot Server'.forma(str(max_tentatives)))
+        raise RuntimeError('Failed {} tentatives of killing Robot Server'.format(str(max_tentatives)))
 
     def kill_all(self):
 
