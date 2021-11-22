@@ -25,6 +25,13 @@ class Client():
         else:
             raise Exception('Error while retrieving state')
 
+    def get_image_msg(self,):
+        msg = self.robot_server_stub.GetImage(robot_server_pb2.Empty(), timeout = 20)
+        if msg.success == 1:
+            return msg
+        else:
+            raise Exception('Error while retrieving image')
+
     def get_state_msg(self,):
         msg = self.robot_server_stub.GetState(robot_server_pb2.Empty(), timeout = 20)
         if msg.success == 1:

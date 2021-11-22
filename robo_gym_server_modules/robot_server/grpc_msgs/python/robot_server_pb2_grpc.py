@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import robot_server_pb2 as robot__server__pb2
+import robot_server_pb2 as robot__server__pb2
 
 
 class RobotServerStub(object):
@@ -34,6 +34,11 @@ class RobotServerStub(object):
                 request_serializer=robot__server__pb2.Action.SerializeToString,
                 response_deserializer=robot__server__pb2.State.FromString,
                 )
+        self.GetImage = channel.unary_unary(
+                '/robot_server.RobotServer/GetImage',
+                request_serializer=robot__server__pb2.Empty.SerializeToString,
+                response_deserializer=robot__server__pb2.B64Image.FromString,
+                )
 
 
 class RobotServerServicer(object):
@@ -63,6 +68,12 @@ class RobotServerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetImage(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_RobotServerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -85,6 +96,11 @@ def add_RobotServerServicer_to_server(servicer, server):
                     servicer.SendActionGetState,
                     request_deserializer=robot__server__pb2.Action.FromString,
                     response_serializer=robot__server__pb2.State.SerializeToString,
+            ),
+            'GetImage': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetImage,
+                    request_deserializer=robot__server__pb2.Empty.FromString,
+                    response_serializer=robot__server__pb2.B64Image.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -161,5 +177,22 @@ class RobotServer(object):
         return grpc.experimental.unary_unary(request, target, '/robot_server.RobotServer/SendActionGetState',
             robot__server__pb2.Action.SerializeToString,
             robot__server__pb2.State.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetImage(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robot_server.RobotServer/GetImage',
+            robot__server__pb2.Empty.SerializeToString,
+            robot__server__pb2.B64Image.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

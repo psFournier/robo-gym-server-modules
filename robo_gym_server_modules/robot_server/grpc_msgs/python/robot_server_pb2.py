@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12robot_server.proto\x12\x0crobot_server\"\x1a\n\x07Success\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x07\n\x05\x45mpty\")\n\x06\x41\x63tion\x12\x0e\n\x06\x61\x63tion\x18\x01 \x03(\x02\x12\x0f\n\x07success\x18\x02 \x01(\x08\"\xf4\x02\n\x05State\x12\r\n\x05state\x18\x01 \x03(\x02\x12:\n\x0c\x66loat_params\x18\x02 \x03(\x0b\x32$.robot_server.State.FloatParamsEntry\x12<\n\rstring_params\x18\x03 \x03(\x0b\x32%.robot_server.State.StringParamsEntry\x12\x36\n\nstate_dict\x18\x04 \x03(\x0b\x32\".robot_server.State.StateDictEntry\x12\x0f\n\x07success\x18\x05 \x01(\x08\x1a\x32\n\x10\x46loatParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\x1a\x33\n\x11StringParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x30\n\x0eStateDictEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\x32\xff\x01\n\x0bRobotServer\x12\x36\n\x08GetState\x12\x13.robot_server.Empty\x1a\x13.robot_server.State\"\x00\x12\x38\n\x08SetState\x12\x13.robot_server.State\x1a\x15.robot_server.Success\"\x00\x12;\n\nSendAction\x12\x14.robot_server.Action\x1a\x15.robot_server.Success\"\x00\x12\x41\n\x12SendActionGetState\x12\x14.robot_server.Action\x1a\x13.robot_server.State\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x12robot_server.proto\x12\x0crobot_server\"\x1a\n\x07Success\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x07\n\x05\x45mpty\")\n\x06\x41\x63tion\x12\x0e\n\x06\x61\x63tion\x18\x01 \x03(\x02\x12\x0f\n\x07success\x18\x02 \x01(\x08\"\xf4\x02\n\x05State\x12\r\n\x05state\x18\x01 \x03(\x02\x12:\n\x0c\x66loat_params\x18\x02 \x03(\x0b\x32$.robot_server.State.FloatParamsEntry\x12<\n\rstring_params\x18\x03 \x03(\x0b\x32%.robot_server.State.StringParamsEntry\x12\x36\n\nstate_dict\x18\x04 \x03(\x0b\x32\".robot_server.State.StateDictEntry\x12\x0f\n\x07success\x18\x05 \x01(\x08\x1a\x32\n\x10\x46loatParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\x1a\x33\n\x11StringParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x30\n\x0eStateDictEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\"-\n\x08\x42\x36\x34Image\x12\x10\n\x08\x62\x36\x34image\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\x32\xba\x02\n\x0bRobotServer\x12\x36\n\x08GetState\x12\x13.robot_server.Empty\x1a\x13.robot_server.State\"\x00\x12\x38\n\x08SetState\x12\x13.robot_server.State\x1a\x15.robot_server.Success\"\x00\x12;\n\nSendAction\x12\x14.robot_server.Action\x1a\x15.robot_server.Success\"\x00\x12\x41\n\x12SendActionGetState\x12\x14.robot_server.Action\x1a\x13.robot_server.State\"\x00\x12\x39\n\x08GetImage\x12\x13.robot_server.Empty\x1a\x16.robot_server.B64Image\"\x00\x62\x06proto3'
 )
 
 
@@ -294,6 +294,45 @@ _STATE = _descriptor.Descriptor(
   serialized_end=489,
 )
 
+
+_B64IMAGE = _descriptor.Descriptor(
+  name='B64Image',
+  full_name='robot_server.B64Image',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='b64image', full_name='robot_server.B64Image.b64image', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='success', full_name='robot_server.B64Image.success', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=491,
+  serialized_end=536,
+)
+
 _STATE_FLOATPARAMSENTRY.containing_type = _STATE
 _STATE_STRINGPARAMSENTRY.containing_type = _STATE
 _STATE_STATEDICTENTRY.containing_type = _STATE
@@ -304,6 +343,7 @@ DESCRIPTOR.message_types_by_name['Success'] = _SUCCESS
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['Action'] = _ACTION
 DESCRIPTOR.message_types_by_name['State'] = _STATE
+DESCRIPTOR.message_types_by_name['B64Image'] = _B64IMAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Success = _reflection.GeneratedProtocolMessageType('Success', (_message.Message,), {
@@ -358,6 +398,13 @@ _sym_db.RegisterMessage(State.FloatParamsEntry)
 _sym_db.RegisterMessage(State.StringParamsEntry)
 _sym_db.RegisterMessage(State.StateDictEntry)
 
+B64Image = _reflection.GeneratedProtocolMessageType('B64Image', (_message.Message,), {
+  'DESCRIPTOR' : _B64IMAGE,
+  '__module__' : 'robot_server_pb2'
+  # @@protoc_insertion_point(class_scope:robot_server.B64Image)
+  })
+_sym_db.RegisterMessage(B64Image)
+
 
 _STATE_FLOATPARAMSENTRY._options = None
 _STATE_STRINGPARAMSENTRY._options = None
@@ -370,8 +417,8 @@ _ROBOTSERVER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=492,
-  serialized_end=747,
+  serialized_start=539,
+  serialized_end=853,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetState',
@@ -410,6 +457,16 @@ _ROBOTSERVER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_ACTION,
     output_type=_STATE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetImage',
+    full_name='robot_server.RobotServer.GetImage',
+    index=4,
+    containing_service=None,
+    input_type=_EMPTY,
+    output_type=_B64IMAGE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
