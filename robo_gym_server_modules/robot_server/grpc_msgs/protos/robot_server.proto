@@ -9,7 +9,7 @@ service  RobotServer {
   rpc SetState(State)             returns (Success) {}
   rpc SendAction(Action)          returns (Success) {}
   rpc SendActionGetState(Action)  returns (State) {}
-  rpc GetImage(Empty)             returns (B64Image) {}
+  rpc GetImage(Empty)             returns (ByteImage) {}
 }
 
 message Success {
@@ -32,7 +32,10 @@ message State {
   bool success                            = 5;
 }
 
-message B64Image {
-    string b64image = 1;
-    bool success = 2;
+message ByteImage {
+    bytes image = 1;
+    int32 width = 2;
+    int32 height = 3;
+    int32 channel = 4;
+    bool success = 5;
 }

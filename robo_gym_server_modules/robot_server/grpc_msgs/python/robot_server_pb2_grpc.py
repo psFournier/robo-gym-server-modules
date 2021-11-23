@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import robot_server_pb2 as robot__server__pb2
+from . import robot_server_pb2 as robot__server__pb2
 
 
 class RobotServerStub(object):
@@ -37,7 +37,7 @@ class RobotServerStub(object):
         self.GetImage = channel.unary_unary(
                 '/robot_server.RobotServer/GetImage',
                 request_serializer=robot__server__pb2.Empty.SerializeToString,
-                response_deserializer=robot__server__pb2.B64Image.FromString,
+                response_deserializer=robot__server__pb2.ByteImage.FromString,
                 )
 
 
@@ -100,7 +100,7 @@ def add_RobotServerServicer_to_server(servicer, server):
             'GetImage': grpc.unary_unary_rpc_method_handler(
                     servicer.GetImage,
                     request_deserializer=robot__server__pb2.Empty.FromString,
-                    response_serializer=robot__server__pb2.B64Image.SerializeToString,
+                    response_serializer=robot__server__pb2.ByteImage.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -193,6 +193,6 @@ class RobotServer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/robot_server.RobotServer/GetImage',
             robot__server__pb2.Empty.SerializeToString,
-            robot__server__pb2.B64Image.FromString,
+            robot__server__pb2.ByteImage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
