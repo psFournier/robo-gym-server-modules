@@ -9,7 +9,6 @@ service  RobotServer {
   rpc SetState(State)             returns (Success) {}
   rpc SendAction(Action)          returns (Success) {}
   rpc SendActionGetState(Action)  returns (State) {}
-  rpc GetImage(Empty)             returns (ByteImage) {}
 }
 
 message Success {
@@ -29,13 +28,9 @@ message State {
   map<string, float> float_params         = 2;
   map<string, string> string_params       = 3; 
   map<string, float> state_dict           = 4;
-  bool success                            = 5;
-}
-
-message ByteImage {
-    bytes image = 1;
-    int32 width = 2;
-    int32 height = 3;
-    int32 channel = 4;
-    bool success = 5;
+  bytes image = 5;
+  int32 width = 6;
+  int32 height = 7;
+  int32 channel = 8;
+  bool success                            = 9;
 }
