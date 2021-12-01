@@ -89,7 +89,7 @@ class ServerManager():
                 logger.info('Tentative {} of {}'.format(str(i),max_tentatives))
                 test_client= Client('localhost:{}'.format(repr(grpc_port)))
                 assert (len(test_client.get_state())> 1)
-                return (grpc_port)
+                return (grpc_port), ros_port
             except grpc.RpcError:
                 logger.debug('Failed to get state from Robot Server', exc_info=True)
                 pass
@@ -115,11 +115,13 @@ class ServerManagerServicer(server_manager_pb2_grpc.ServerManagerServicer):
         logger.info('Starting Robot Server...')
         try:
             rl_msg = server_manager_pb2.RobotServer()
-            rl_server = self.srv_mngr.add_rl_server(cmd= request.cmd, gui= request.gui)
+            rl_server, ros_port = self.srv_mngr.add_rl_server(cmd= request.cmd, gui= request.gui)
             assert isinstance(rl_server, int)
             rl_msg.port = rl_server
             rl_msg.success = 1
             logger.info('Robot Server started at %s successfully', repr(rl_server))
+            logger.info('Monitor ROS processes with export ROS_MASTER_URI=http://localhost:{}'.format(repr(ros_port)))
+            logger.info('Monitor experiment with tmux -L ServerManager a -t {}'.format(repr(rl_server)))
             return rl_msg
 
         except:
